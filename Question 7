@@ -1,0 +1,10 @@
+s = "This is Zoho and Zoho is good"
+l = s.split()
+k = []
+for i in l:
+ 
+    # If condition is used to store distinct string
+    # in another list 'k'
+    if (s.count(i)>=1 and (i not in k)):
+        k.append(i)
+print(' '.join(k))
