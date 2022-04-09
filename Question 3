@@ -1,0 +1,81 @@
+
+     def findLargest(s):
+
+    Len = len(s)
+ 
+
+    # Stores last occurrence  
+
+    # of every character
+
+    # Initialize with -1 for  
+
+    # every character
+
+    loccur = [-1 for i in range(26)]
+ 
+
+    for i in range(Len - 1, -1, -1):
+ 
+
+        # Keep updating the last  
+
+        # occurrence of each character
+
+        chI = ord(s[i]) - ord('a')
+ 
+
+        # If a previously unvisited  
+
+        # character occurs
+
+        if(loccur[chI] == -1):
+
+            loccur[chI] = i
+
+
+    # Stores the sorted string 
+
+    sorted_s = sorted(s, reverse = True)
+
+    for i in range(Len):
+
+        if(s[i] != sorted_s[i]):
+ 
+
+            # Character to replace
+
+            chI = (ord(sorted_s[i]) -
+
+                   ord('a'))
+ 
+
+            # Find the last occurrence  
+
+            # of this character
+
+            last_occ = loccur[chI]
+
+            temp = list(s)
+ 
+
+            # Swap this with the last  
+
+            # occurrence
+
+            temp[i], temp[last_occ] = (temp[last_occ],
+
+                                       temp[i])
+
+            s = "".join(temp)
+
+            break
+
+    return s
+ 
+# Driver code
+
+s1 = "abdf"
+print(s1[::-1])
+s2 = "hafd"
+print(findLargest(s2))
