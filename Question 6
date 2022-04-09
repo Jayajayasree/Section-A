@@ -1,0 +1,38 @@
+def string(s):
+ 
+    # base case
+    if not s or not len(s):
+        return ''
+ 
+    # create a dictionary for characters of a given string
+    freq = {}
+ 
+    for ch in s:
+        freq[ch] = freq.get(ch, 0) + 1
+ 
+    left = ''                   # stores left substring
+    mid = ''
+ 
+    # iterate through the frequency dictionary
+    for ch, count in freq.items():
+ 
+        # if the current character's frequency is odd,
+        # update mid to current (and discard the old one)
+        if count % 2 ==1:
+            mid =  ch         # stores odd character
+ 
+        # append half of the characters to the left substring
+        # (the other half goes to the right substring in reverse order)
+        for i in range(count // 2):
+            left += ch
+ 
+    # the right substring will be the reverse of the left substring
+    right = left[::-1]
+ 
+    # return formed by the left substring, mid-character (if any),
+    # and the right substring
+    return right + mid + left
+if _name_ == '_main_':
+ 
+    s = 'madameaga'
+    print('The longest palindrome is', string(s))
