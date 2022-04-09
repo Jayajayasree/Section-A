@@ -1,0 +1,15 @@
+str_x = 'abcdefg'
+ 
+str_y = 'abcdefg'
+ 
+ 
+ 
+#comparing by ==
+ 
+if str_x == str_y:
+ 
+    print ("Equal difference")
+ 
+else:
+ 
+    print ("Unequal difference")
