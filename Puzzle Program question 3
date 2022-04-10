@@ -1,0 +1,155 @@
+x = 5  # Number of Row
+y = 4  # Number of Column
+position_adv = [5,1]
+start = position_adv
+position_gld = [4,3]
+end = position_gld
+position_mons = [3,1]
+monster = position_mons
+
+list_final_result = []
+list_final_result.append(start)
+list_monster_final_result = []
+list_main = []
+
+for i in range(0,x):
+    list = []
+    for j in range(0,y):
+        list.append([i+1,j+1])
+    list_main.append(list)
+
+
+# The Above Code Created a Matrix
+
+
+for i in list_main:
+    print(i)
+
+print("\n\n")
+
+# Print the matrix
+
+while start != end:
+    test_list = []
+    test_monster_list = []
+
+    # Two List to save the path of adventure and monster
+
+
+
+    possible_val_one = [start[0]-1 ,start[1]]
+    for i in list_main:
+        if possible_val_one in i:
+            test_list.append(possible_val_one)
+
+
+    possible_val_two = [start[0]+1 ,start[1]]
+    for i in list_main:
+        if possible_val_two in i:
+            test_list.append(possible_val_two)
+
+
+    possible_val_three = [start[0] ,start[1]-1]
+    for i in list_main:
+        if possible_val_three in i:
+            test_list.append(possible_val_three)
+
+
+    possible_val_four = [start[0] ,start[1]+1]
+    for i in list_main:
+        if possible_val_four in i:
+            test_list.append(possible_val_four)
+
+
+    if end in test_list:
+        list_final_result.append(end)
+        break
+
+    list_result = []
+
+    list_result_dict = {
+
+    }
+
+    for i in test_list:
+        xa = i[0]
+        ya = i[1]
+        xb = end[0]
+        yb = end[1]
+        distance = (((xb - xa) * (xb - xa)) + ((yb - ya) * (yb - ya))) ** 0.5
+        list_result_dict[distance] = i
+        list_result.append(distance)
+
+
+        # Validated the possible path and minimum path of adventure
+
+
+
+
+
+
+
+
+
+    possible_monster_val_one = [monster[0] - 1, monster[1]]
+    for i in list_main:
+        if possible_monster_val_one in i:
+            test_monster_list.append(possible_monster_val_one)
+
+    possible_monster_val_two = [monster[0] + 1, monster[1]]
+    for i in list_main:
+        if possible_monster_val_two in i:
+            test_monster_list.append(possible_monster_val_two)
+
+    possible_monster_val_three = [monster[0], monster[1] - 1]
+    for i in list_main:
+        if possible_monster_val_three in i:
+            test_monster_list.append(possible_monster_val_three)
+
+    possible_monster_val_four = [monster[0], monster[1] + 1]
+    for i in list_main:
+        if possible_monster_val_four in i:
+            test_monster_list.append(possible_monster_val_four)
+
+    list_monster_result = []
+
+    list_monster_result_dict = {
+
+    }
+
+    for i in test_monster_list:
+        xa = i[0]
+        ya = i[1]
+        xb = end[0]
+        yb = end[1]
+        distance = (((xb - xa) * (xb - xa)) + ((yb - ya) * (yb - ya))) ** 0.5
+        list_monster_result_dict[distance] = i
+        list_monster_result.append(distance)
+
+
+    index_test = min(list_monster_result)
+    list_monster_final_result.append(list_monster_result_dict[index_test])
+    monster = list_monster_result_dict[index_test]
+
+
+    # Validate the possible and minimum path of monster
+
+
+
+    index = min(list_result)
+    if list_result_dict[index] == monster:
+        list_result.remove(min(list_result))
+        index = min(list_result)
+        list_final_result.append(list_result_dict[index])
+        start = test_list[index]
+    else:
+        list_final_result.append(list_result_dict[index])
+        start = list_result_dict[index]
+
+
+    # Check Whether they meet on same point
+
+
+
+print(list_final_result)
+
