@@ -1,0 +1,39 @@
+import math
+
+# Function to find minimum
+# steps to reach gold
+
+
+def StepstoReachTarget(target):
+
+	# Handling negatives
+	# by symmetry
+	target = abs(target)
+
+	# Keep moving while sum is
+	# smaller i.e calculating n
+	n = math.ceil((-1.0 + math.sqrt(1 +
+									8.0 * target)) / 2)
+	sum = n * (n + 1) / 2
+
+	if (sum == target):
+		return n
+
+	d = sum - target
+
+	# case 1 : d is even
+	if ((int(d) & 1) == 0):
+		return n
+
+	# d is odd
+	else:
+		if(int(d) & 1):
+			return n + 2
+		return n + 1
+
+
+# Driver code
+target = 3
+
+# Function call
+print("the minimum number of steps:",(target))
