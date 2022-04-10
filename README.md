@@ -1,2 +1,2 @@
-# Section-A
-Basic Programming
+# Section-B
+Puzzle Programming
